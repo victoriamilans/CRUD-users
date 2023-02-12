@@ -8,6 +8,7 @@ import { createProductController } from "../controllers/Products/createProduct.c
 import { deleteProductController } from "../controllers/Products/deleteProduct.controller";
 import { editProductController } from "../controllers/Products/editProduct.controller";
 import { listProductByIdController } from "../controllers/Products/listProductById.controller";
+import { listProductsController } from "../controllers/Products/listProducts.controller";
 import { dataIsValidMiddleware } from "../middlewares/dataIsValid.middleware";
 import {
   inputIsValidMiddleware,
@@ -82,3 +83,5 @@ productsRouter.get(
   inputUuidIsValidMiddleware(),
   listProductByIdController
 );
+
+productsRouter.get("", listProductsController);
