@@ -1,0 +1,25 @@
+{
+  "name": "products-and-categories-api",
+  "version": "1.0.0",
+  "main": "./src/app.js",
+  "license": "MIT",
+  "author": "VictoriaMilan",
+  "scripts": {
+    "dev": "nodemon ./src/server.js",
+    "clear_db": "psql -U guilh -d tests_products -c \"DELETE FROM products; DELETE FROM categories;\" \"exit\""
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.3",
+    "express": "^4.18.2",
+    "express-async-errors": "^3.1.1",
+    "jsonwebtoken": "^9.0.0",
+    "pg": "^8.9.0",
+    "yup": "^1.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.20",
+    "sucrase": "^3.29.0"
+  }
+}
