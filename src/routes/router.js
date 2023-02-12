@@ -6,6 +6,7 @@ import { listCategoriesController } from "../controllers/Categories/listCategori
 import { listCategoryByIdController } from "../controllers/Categories/listCategoryById.controller";
 import { createProductController } from "../controllers/Products/createProduct.controller";
 import { deleteProductController } from "../controllers/Products/deleteProduct.controller";
+import { editProductController } from "../controllers/Products/editProduct.controller";
 import { dataIsValidMiddleware } from "../middlewares/dataIsValid.middleware";
 import {
   inputIsValidMiddleware,
@@ -59,6 +60,13 @@ productsRouter.post(
   "",
   dataIsValidMiddleware(createProductSchema),
   createProductController
+);
+
+productsRouter.patch(
+  "/:id",
+  inputUuidIsValidMiddleware(),
+  verifyProductIdExistMiddleware(),
+  editProductController
 );
 
 productsRouter.delete(
