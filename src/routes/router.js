@@ -2,6 +2,8 @@ import { Router } from "express";
 import { createCategorieController } from "../controllers/Categories/createCategories.controller";
 import { deleteCategoryController } from "../controllers/Categories/deleteCategory.controller";
 import { editCategoryController } from "../controllers/Categories/editCategory.controller";
+import { listCategoriesController } from "../controllers/Categories/listCategories.controller";
+import { listCategoryByIdController } from "../controllers/Categories/listCategoryById.controller";
 import { dataIsValidMiddleware } from "../middlewares/dataIsValid.middleware";
 import { inputIsValidMiddleware } from "../middlewares/inputIsValid.middleware";
 import { verifyIdExistMiddleware } from "../middlewares/verifyIdExist.middleware";
@@ -13,6 +15,15 @@ import {
 export const categoriesRouter = Router();
 export const productsRouter = Router();
 export const productByCategory = Router();
+
+categoriesRouter.get("", listCategoriesController);
+
+categoriesRouter.get(
+  "/:id",
+  inputIsValidMiddleware(),
+  verifyIdExistMiddleware(),
+  listCategoryByIdController
+);
 
 categoriesRouter.post(
   "",
