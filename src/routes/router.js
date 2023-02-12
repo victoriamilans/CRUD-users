@@ -5,14 +5,21 @@ import { editCategoryController } from "../controllers/Categories/editCategory.c
 import { listCategoriesController } from "../controllers/Categories/listCategories.controller";
 import { listCategoryByIdController } from "../controllers/Categories/listCategoryById.controller";
 import { createProductController } from "../controllers/Products/createProduct.controller";
+import { deleteProductController } from "../controllers/Products/deleteProduct.controller";
 import { dataIsValidMiddleware } from "../middlewares/dataIsValid.middleware";
-import { inputIsValidMiddleware } from "../middlewares/inputIsValid.middleware";
-import { verifyIdExistMiddleware } from "../middlewares/verifyIdExist.middleware";
+import {
+  inputIsValidMiddleware,
+  inputUuidIsValidMiddleware,
+} from "../middlewares/inputIsValid.middleware";
+import {
+  verifyIdExistMiddleware,
+  verifyProductIdExistMiddleware,
+} from "../middlewares/verifyIdExist.middleware";
 import {
   createCategorySchema,
   editCategorySchema,
 } from "../schemas/categories.schema";
-import { createProductSchema } from "../schemas/products.chema";
+import { createProductSchema } from "../schemas/products.schema";
 
 export const categoriesRouter = Router();
 export const productsRouter = Router();
@@ -52,4 +59,11 @@ productsRouter.post(
   "",
   dataIsValidMiddleware(createProductSchema),
   createProductController
+);
+
+productsRouter.delete(
+  "/:id",
+  inputUuidIsValidMiddleware(),
+  verifyProductIdExistMiddleware(),
+  deleteProductController
 );

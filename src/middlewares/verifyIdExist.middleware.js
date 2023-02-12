@@ -27,7 +27,7 @@ export const verifyProductIdExistMiddleware = () => async (req, res, next) => {
       products.id = ($1);`,
     [req.params.id]
   );
-  console.log(verifyidyExists);
+
   if (!verifyidyExists.rowCount > 0) {
     throw new AppError("Product not found", 404);
   }

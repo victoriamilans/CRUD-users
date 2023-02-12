@@ -9,7 +9,6 @@ export const inputIsValidMiddleware = () => async (req, res, next) => {
 };
 
 export const inputUuidIsValidMiddleware = () => async (req, res, next) => {
-  console.log(typeof req.params.uuid);
   try {
     const verifyProductExists = await database.query(
       `
@@ -24,7 +23,7 @@ export const inputUuidIsValidMiddleware = () => async (req, res, next) => {
     );
 
     if (!verifyProductExists.rowCount) {
-      throw new AppError("Not found.", 404);
+      throw new AppError("Product not found.", 404);
     }
   } catch (error) {
     console.log(error);
