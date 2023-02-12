@@ -7,6 +7,7 @@ import { listCategoryByIdController } from "../controllers/Categories/listCatego
 import { createProductController } from "../controllers/Products/createProduct.controller";
 import { deleteProductController } from "../controllers/Products/deleteProduct.controller";
 import { editProductController } from "../controllers/Products/editProduct.controller";
+import { listProductByIdController } from "../controllers/Products/listProductById.controller";
 import { dataIsValidMiddleware } from "../middlewares/dataIsValid.middleware";
 import {
   inputIsValidMiddleware,
@@ -74,4 +75,10 @@ productsRouter.delete(
   inputUuidIsValidMiddleware(),
   verifyProductIdExistMiddleware(),
   deleteProductController
+);
+
+productsRouter.get(
+  "/:id",
+  inputUuidIsValidMiddleware(),
+  listProductByIdController
 );
