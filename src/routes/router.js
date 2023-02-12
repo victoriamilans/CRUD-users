@@ -9,6 +9,7 @@ import { deleteProductController } from "../controllers/Products/deleteProduct.c
 import { editProductController } from "../controllers/Products/editProduct.controller";
 import { listProductByIdController } from "../controllers/Products/listProductById.controller";
 import { listProductsController } from "../controllers/Products/listProducts.controller";
+import { listProductsByCategoryIdController } from "../controllers/Products/listProductsByCategoryId.controller";
 import { dataIsValidMiddleware } from "../middlewares/dataIsValid.middleware";
 import {
   inputIsValidMiddleware,
@@ -85,3 +86,10 @@ productsRouter.get(
 );
 
 productsRouter.get("", listProductsController);
+
+productByCategory.get(
+  "/:id",
+  inputIsValidMiddleware(),
+  verifyIdExistMiddleware(),
+  listProductsByCategoryIdController
+);

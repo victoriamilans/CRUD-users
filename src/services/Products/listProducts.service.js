@@ -10,7 +10,7 @@ export const listProductsService = async (newProduct) => {
   );
 
   if (!queryResponse.rows[0]) {
-    throw new AppError("There are no products yet", 200);
+    throw new AppError("There are no products yet", 400);
   }
   return queryResponse.rows;
 };

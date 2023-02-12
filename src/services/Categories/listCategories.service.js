@@ -10,7 +10,7 @@ export const listCategoriesService = async (category) => {
   );
 
   if (!queryResponse.rows[0]) {
-    throw new AppError("There are no categories yet", 200);
+    throw new AppError("There are no categories yet", 400);
   }
 
   return queryResponse.rows;
